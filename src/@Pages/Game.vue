@@ -567,19 +567,7 @@ export default {
   margin-bottom: 0;
 }
 
-@keyframes xh {
-  from {
-    margin-bottom: 50px;
-  }
-  to {
-    margin-bottom: 0px;
-  }
-}
 
-.xh {
-  animation: xh 0.5s linear both;
-  transform: rotateY(180deg);
-}
 .weapon {
   transition: all 1s;
   widows: 100px;

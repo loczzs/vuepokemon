@@ -17,7 +17,7 @@
             v-show="Show.inturn"
             class="arrow-down absolute top-[0] left-[50%] -translate-x-[50%] border-t-[20px] border-green-400"
           ></div>
-          <img :src="myPokemonz?.img" alt="" class="mt-5 h-[215px] w-[215px]" />
+          <img :src="myPokemonz?.img" alt="" class="  mt-5 h-[215px] w-[215px]" />
 
           <img
             v-show="Status.injured1"
@@ -49,7 +49,7 @@
     >
       <div class="flex justify-between gap-5">
         <div class="xh h-[134px] w-[23%]">
-          <img :src="myPokemonz.img" class="h-full w-full" alt="" />
+          <img :src="myPokemonz.img" class=" h-full w-full" alt="" />
         </div>
         <div class="relative mt-3 w-[76%]">
           <div class="relative h-[30px] w-full rounded-2xl bg-[#4a206a]">
@@ -140,6 +140,19 @@ export default {
 };
 </script>
 <style scoped>
+@keyframes xh {
+  from {
+    margin-bottom: 50px;
+  }
+  to {
+    margin-bottom: 0px;
+  }
+}
+
+.xh {
+  animation: xh 0.5s linear both;
+  transform: rotateY(180deg);
+}
 @keyframes injure {
   from {
     transform: rotate(0deg);

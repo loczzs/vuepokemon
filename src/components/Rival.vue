@@ -156,6 +156,19 @@ export default {
     width: HP + "%";
   }
 }
+@keyframes xh {
+  from {
+    margin-bottom: 50px;
+  }
+  to {
+    margin-bottom: 0px;
+  }
+}
+
+.xh {
+  animation: xh 0.5s linear both;
+  transform: rotateY(180deg);
+}
 .HP{
   transition: all 10s;
   animation: HP 1s linear alternate both;

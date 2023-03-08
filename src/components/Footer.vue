@@ -1,5 +1,5 @@
 <template lang="">
-  <footer className="footer">
+  <footer className="footer " v-show="showHeader">
     <div class="m-auto h-full w-[90%] px-3">
       <div class="flex justify-between gap-9">
         <div class="w-[24%]">
@@ -63,7 +63,9 @@ import {
   cibTwitter,
   cibDiscord,
 } from "@coreui/icons";
+import { mapGetters, mapMutations, mapActions } from "vuex";
 export default {
+  ...mapGetters(["showHeader"]),
   data() {
     return {
       footer: [
@@ -163,9 +165,7 @@ export default {
 };
 </script>
 <style scoped>
-.icon {
-  color: pink !important;
-}
+
 .h2 {
   background: linear-gradient(-45deg, #e250e5, #4b50e6, #e250e5, #4b50e6);
   background-size: 100% 100%;
