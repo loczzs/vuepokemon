@@ -1,5 +1,5 @@
 <template lang="">
-  <footer className="footer " v-show="showHeader">
+  <footer className="footer " >
     <div class="m-auto h-full w-[90%] px-3">
       <div class="flex justify-between gap-9">
         <div class="w-[24%]">

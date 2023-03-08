@@ -182,4 +182,17 @@ export default {
   animation: injure 0.5s linear alternate;
   animation-iteration-count: 1;
 }
+@keyframes heal {
+  from {
+    top: 15%;
+    opacity: 1;
+  }
+  to {
+    top: -10%;
+    opacity: 0;
+  }
+}
+.Heal {
+  animation: heal alternate 1s linear both;
+}
 </style>
