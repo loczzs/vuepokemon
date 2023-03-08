@@ -24,7 +24,8 @@
    </div>
   </section>
 </template>
-<script>
+<script lang="ts
+">
 import ava1 from "../images/ava-01.png"
 import ava2 from "../images/ava-02.png"
 import ava3 from "../images/ava-03.png"

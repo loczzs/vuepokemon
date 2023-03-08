@@ -246,7 +246,7 @@ type Attacker = Pick<Data, "myPokemonz" | "rival">;
 type Hp = Pick<Data, "PlayerHp" | "rivalHp">;
 import Player from "@/components/Player.vue";
 import Rival from "@/components/Rival.vue";
-import Figth from "@/components/Figth.vue";
+
 
 export default {
   data(): Data {
@@ -499,7 +499,7 @@ export default {
     PlusOutlined,
     Player,
     Rival,
-    Figth,
+    
     DollarCircleOutlined,
   },
 };

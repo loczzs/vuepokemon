@@ -8,7 +8,7 @@
         >
           <div className="filter__left flex items-center gap-5">
             <div className="all__category__filter">
-              <select @change="(e)=>{
+              <select @change="(e:any)=>{
                   searchType(e.target.value)
               }">
                 <option value="all">All Categories</option>
@@ -21,7 +21,7 @@
             </div>
 
             <div className="all__items__filter">
-              <select onChange="{handleItems}">
+              <select >
                 <option>All Items</option>
                 <option>Single-item</option>
                 <option>Bundle</option>
@@ -30,7 +30,7 @@
           </div>
 
           <div className="filter__right">
-            <select onChange="{handleSort}">
+            <select >
               <option>Sort By</option>
               <option>High Rate</option>
               <option>Mid Rate</option>
@@ -47,7 +47,7 @@
     </section>
   </div>
 </template>
-<script>
+<script lang="ts">
 import PokeCard from "../components/PokeCard.vue";
 import { CIcon } from "@coreui/icons-vue";
 import { cilList, cilShieldAlt, cilLeaf } from "@coreui/icons";
