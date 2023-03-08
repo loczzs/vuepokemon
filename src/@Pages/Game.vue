@@ -26,6 +26,7 @@
         </div>
         <div class="overflow-hidden">
           <img
+          loading="lazy"
             v-show="ShowAttack1"
             class="weapon absolute top-[50%] z-50 h-[250px] w-[250px] -translate-y-[50%]"
             :src="attack"
@@ -33,6 +34,7 @@
           />
 
           <img
+          loading="lazy"
             v-show="ShowAttack2"
             class="weapon2 absolute top-[50%] z-50 h-[250px] w-[250px] -translate-y-[50%]"
             :src="attack"
@@ -87,7 +89,7 @@
           class="result absolute right-[50%] z-50 -translate-y-[50%] translate-x-[50%]"
         >
           <div>
-            <img :src="result" alt="" />
+            <img loading="lazy" :src="result" alt="" />
           </div>
           <div v-show="showplusMoney" class="text-center">
             <h1
@@ -521,6 +523,7 @@ export default {
   }
 }
 .bgFight {
+  
   animation: loadimg 2s both alternate linear;
   background: url("../images/4455.jpg");
   background-position: center center;
