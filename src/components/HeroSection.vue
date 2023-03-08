@@ -31,7 +31,7 @@
     </div>
     <div class="w-[500px] overflow-hidden">
       <video
-        src="../video/Home Video.mp4"
+        :src="video"
         class="video h-auto w-full rounded-[7px]"
         type="video/mp4"
         autoPlay
@@ -46,6 +46,7 @@
 import { defineComponent } from "vue";
 import { RocketOutlined } from "@ant-design/icons-vue";
 import { EditOutlined } from "@ant-design/icons-vue";
+import video from "../video/Home Video.mp4"
 </script>
 <script lang="ts">
 export default defineComponent({
