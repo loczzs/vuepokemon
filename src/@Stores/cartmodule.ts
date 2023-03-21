@@ -1,17 +1,21 @@
 import { Pokemon } from "@/interFace/interface";
+import listmodule from "./listmodule"
 
 interface State {
   cart: Pokemon[];
   userCoin: number;
   myPokemon: Pokemon[];
   total: number;
+  cartfilter:Pokemon[]
+  
 }
 const cartmodule = {
   state: {
-    userCoin:  JSON.parse(localStorage.getItem("userCoin")  || "20000") , 
+    userCoin:  JSON.parse(localStorage.getItem("userCoinz")  || "20000") , 
     cart: [] as Pokemon[],
     total: 0,
     myPokemon: JSON.parse(localStorage.getItem("myPokemon") || "[]") as Pokemon[],
+    cartfilter:listmodule.state.listPokemon
   },
   getters: {
     cart: (state: State) => {
@@ -29,22 +33,24 @@ const cartmodule = {
     },
   },
   mutations: {
-    setUsercoin(state: State){
-      localStorage.setItem('userCoin', JSON.stringify(state.userCoin)) ;
+    setUsercoinz(state:State,payload:number){ 
+      console.log(payload);
+      state.userCoin = payload;
+      
+      localStorage.setItem('userCoinz', JSON.stringify(payload)) ;
     },
     addTocart(state: State, payload: Pokemon) {
       state.cart = [...state.cart, payload];
-      console.log(state.cart.length);
-      
+     
       state.total = state.total + payload.price;
     },
     Purchase(state: State) {
       state.userCoin = state.userCoin - state.total;
-      console.log(state.userCoin);
+      
       
       state.myPokemon = [...state.myPokemon,...state.cart];
       localStorage.setItem("myPokemon", JSON.stringify([...state.myPokemon]));
-      cartmodule.mutations.setUsercoin(state)
+      cartmodule.mutations.setUsercoinz(state,state.userCoin)
       cartmodule.mutations.clearCart(state);
     },
     clearCart(state: State) {
@@ -66,8 +72,9 @@ const cartmodule = {
        
         await sleep(0.7);
       }
-      cartmodule.mutations.setUsercoin(state)
-    }
+      cartmodule.mutations.setUsercoinz(state,state.userCoin)
+    },
+    
   },
   actions: {},
 };

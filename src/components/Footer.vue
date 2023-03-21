@@ -1,8 +1,8 @@
 <template lang="">
-  <footer className="footer " >
-    <div class="m-auto h-full w-[90%] px-3">
-      <div class="flex justify-between gap-9">
-        <div class="w-[24%]">
+  <footer v-show="showHeader" className="footer" >
+    <div class="m-auto h-full w-[90%] ">
+      <div class="flex  flex-wrap ">
+        <div class="w-[26%] 768:w-1/2 px-3 col">
           <div>
             <h2 className="h2 flex gap-2 items-center">NFTs</h2>
             <p>
@@ -13,7 +13,7 @@
           </div>
         </div>
         <div
-          class="mt-3 w-[17%]"
+          class="mt-3 w-[17%] px-3 768:w-1/2 col"
           v-for="(item, index) in footer"
           :key="item.title"
         >
@@ -35,7 +35,7 @@
           </ul>
         </div>
 
-        <div class="mt-3 w-[25%]">
+        <div class="mt-3 w-[23%] px-3 col 768:w-1/2">
           <h5 class="mb-0 text-[1.1rem] text-white">Newsletter</h5>
           <input type="text" className="newsletter" placeholder="Email" />
       
@@ -65,7 +65,9 @@ import {
 } from "@coreui/icons";
 import { mapGetters, mapMutations, mapActions } from "vuex";
 export default {
+ computed:{
   ...mapGetters(["showHeader"]),
+ },
   data() {
     return {
       footer: [
@@ -232,5 +234,25 @@ export default {
 
 .copyright {
   font-size: 0.8rem;
+}
+@media only screen and (max-width: 991px) {
+  
+  .col {
+    width:33.33% !important;
+  }
+}
+@media only screen and (max-width: 767px) {
+  
+  .col {
+    width:50% !important;
+  }
+}
+@media only screen and (max-width: 575px) {
+  .row{
+    flex-direction: column;
+  }
+  .col {
+    width:100% !important;
+  }
 }
 </style>

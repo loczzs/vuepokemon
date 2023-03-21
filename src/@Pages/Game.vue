@@ -44,7 +44,7 @@
         <div
           :class="{ Showbutton: animatbutton }"
           v-show="showButton"
-          class="absolute bottom-[10%] right-[50%] translate-x-[50%]"
+          class="absolute bottom-[20%] right-[50%] translate-x-[50%]"
         >
           <button
             :disabled="ShowAttack1"
@@ -57,7 +57,7 @@
                 'rival'
               )
             "
-            class="mr-3 w-[60px] rounded-md bg-[#943a0f] p-2 hover:scale-110"
+            class="mr-3 w-[80px] rounded-md border-4 border-[#be5229] font-bold bg-[#e3a13c] p-1  hover:scale-110"
           >
             Attack
           </button>
@@ -72,14 +72,14 @@
                 'rival'
               )
             "
-            class="mr-3 w-[60px] rounded-md bg-[#943a0f] p-2 hover:scale-110"
+            class="mr-3 w-[80px] rounded-md bg-[#e3a13c] font-bold border-4 border-[#be5229] p-1 hover:scale-110"
           >
             Skill
           </button>
           <button
             :disabled="Healbuttons"
             @click="hEal('heal1', 'myPokemonz', 'PlayerHp')"
-            class="w-[60px] rounded-md bg-[#943a0f] p-2"
+            class="w-[80px] rounded-md bg-[#e3a13c] font-bold border-4 border-[#be5229] p-1"
           >
             Heal
           </button>
@@ -152,7 +152,7 @@
             :class="myPokemon.length > 0 ? 'h-[500px]' : 'h-[120px] w-auto'"
             class="flex h-[500px] w-[50%] flex-col rounded-lg bg-[#14141f] p-4"
           >
-            <h1 class="h2" v-if="myPokemon.length > 0">Choose Your Pokemon</h1>
+            <h1 class="text-2xl text-white mb-4" v-if="myPokemon.length > 0">Choose Your Pokemon</h1>
             <div
               v-if="myPokemon.length > 0"
               class="scrollbar mb-1 flex h-[85%] flex-wrap gap-3 overflow-y-scroll"
@@ -195,7 +195,7 @@
                 @click="checkHeader(true)"
               >
                 <button
-                  class="mr-3 rounded-xl bg-transparent p-2 font-semibold text-[#327eff] hover:bg-white"
+                  class="mr-5 rounded-xl bg-transparent p-2 font-semibold text-[#327eff] hover:bg-white"
                 >
                   Back
                 </button>
@@ -618,7 +618,7 @@ export default {
     bottom: 50%;
   }
   to {
-    bottom: 10%;
+    bottom: 20%;
   }
 }
 .Showbutton {

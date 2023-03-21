@@ -39,6 +39,14 @@ const listmodule = {
         )
         ?.reverse();
     },
+    listAftercreate:function(state: State,payload: Pokemon){
+      
+      state.listPokemon = [...state.listPokemon,payload]
+      const pokemoncreate =  JSON.parse(localStorage.getItem("pokemoncreate") || "[]") as Pokemon[]
+
+      localStorage.setItem('pokemoncreate', JSON.stringify([...pokemoncreate,payload])); ;
+      
+    }
   },
   actions: {
     callPokelist: async function ({ commit }: any) {
@@ -46,36 +54,37 @@ const listmodule = {
         const res = await axios.get(
           "https://62f8549b3eab3503d1d55ce4.mockapi.io/Pokemon"
         );
-
+              console.log(res);
+              
         commit("SET_list", res.data);
       } catch (error) {
         console.log(error);
       }
     },
-    searchType: async function ({ commit }: any, payload: string) {
-      if(payload === "all"){
-        listmodule.actions.callPokelist({ commit })
-        return
-      }
+    // searchType: async function ({ commit }: any, payload: string) {
       
-      try {
-        const res = await axios.get(
-          "https://62f8549b3eab3503d1d55ce4.mockapi.io/Pokemon",
-          {
-            params: {
-              type: payload
-            },
-          }
-        );
+      
+    //   if(payload === "all"){
+    //     listmodule.actions.callPokelist({ commit })
+    //     return
+    //   }
+      
+    //   try {
+    //     const res = await axios.get(
+    //       "https://62f8549b3eab3503d1d55ce4.mockapi.io/Pokemon",
+    //       {
+    //         params: {
+    //           type: payload
+    //         },
+    //       }
+    //     );
 
-        commit("SET_list", res.data);
-      } catch (error) {
-        console.log(error);
-      }
-    },
-    searchPrice:({ commit }: any,payload:string)=>{
-
-    }
+    //     commit("SET_list", res.data);
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
+    // },
+    
   },
 };
 export default listmodule;

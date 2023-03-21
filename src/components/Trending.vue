@@ -3,7 +3,7 @@ import PokeCard from "../components/PokeCard.vue";
 </script>
 <template>
   <section>
-    <div class="flex items-center justify-between text-[#fff] mb-[18px]">
+    <div class="flex px-3 items-center justify-between text-[#fff] mb-[18px]">
       <h3 class="text-3xl font-semibold text-[#fff] " >Trending</h3>
       <span>
         <RouterLink to="/Market">
@@ -13,7 +13,7 @@ import PokeCard from "../components/PokeCard.vue";
     </div>
     <div class="flex w-full flex-wrap justify-between">
       <div
-        class="mb-[60px] w-[23.75%]"
+        class="mb-[60px] w-[25%] px-3 992:px-1 col 992:w-1/3"
         v-for="item in liveAution"
         :key="item.id"
       >
@@ -46,4 +46,15 @@ export default {
   },
 };
 </script>
-<style></style>
+<style>
+@media only screen and (max-width: 767px) {
+  .col{
+    width: 50%;;
+  }
+ }
+ @media only screen and (max-width: 575px) {
+  .col{
+    width: 100%;;
+  }
+}
+</style>

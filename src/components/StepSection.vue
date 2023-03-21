@@ -1,25 +1,27 @@
 <template lang="">
   <section>
-    <div class="mb-[1.5rem]">
+    <div class="mb-[1.5rem] px-3">
       <h3 class="text-3xl font-semibold text-[#fff]">Buy and Play Poke Game</h3>
     </div>
-    <div class="flex justify-between">
+    <div class="row flex justify-between flex-wrap">
       <div
         v-for="(item, index) in STEP__DATA"
         :key="item.id"
-        class="mb-[1.5rem] w-[23.5%]"
+        class="col mb-[1.5rem] w-1/4 px-3"
       >
-        <div className="bg-[#343444] rounded-[5px] p-[30px] w-full">
-            <div class="p-5 bg-[#5142fc] inline-block rounded-md">
-                <CIcon
-                  :icon="item.icon"
-                  style="color: white"
-                  class="h-[25px] w-[25px] "
-                />
-            </div>
+        <div className="bg-[#343444] rounded-[5px] p-[30px] pt-[20px] w-full">
+          <span
+            class="flex h-[60px] w-[60px] items-center justify-center rounded-md bg-[#5142fc]"
+          >
+            <CIcon
+              :icon="item.icon"
+              style="color: white"
+              class="h-[25px] w-[25px]"
+            />
+          </span>
           <div className="  mt-1">
             <h5>
-              <a class="text-[#fff] no-underline text-xl">{{ item.title }}</a>
+              <a class="text-xl text-[#fff] no-underline">{{ item.title }}</a>
             </h5>
             <p className="mb-0">
               {{ item.desc }}
@@ -81,37 +83,27 @@ export default {
       cilList,
     };
   },
-  components:{
-    CIcon
-  }
+  components: {
+    CIcon,
+  },
 };
 </script>
 <style scoped>
-.single__step__item {
-  background: #343444;
-  border-radius: 5px;
-  padding: 30px;
+.bgicon {
+  display: inline-block;
 }
+@media only screen and (max-width: 1254px) {
 
-.step__title {
-  color: #fff;
+.col {
+    width: 50% !important;
+  }
 }
-
-.step__item__content h5 a {
-  text-decoration: none;
-  color: #fff;
-}
-
-.single__step__item span i {
-  color: #fff;
-  padding: 20px;
-  font-size: 1.4rem;
-  background: #5142fc;
-  border-radius: 5px;
-}
-
-.step__item__content {
-  margin-top: 20px !important;
+@media only screen and (max-width: 628px) {
+.row {
+    flex-direction: column;
+  }
+.col {
+    width: 100% !important;
+  }
 }
 </style>
->

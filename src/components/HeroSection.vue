@@ -1,13 +1,13 @@
 <template lang="">
-  <section class="mt-[120px] flex justify-between text-white">
+  <section class="mt-[120px] 992:mt-[90px] flex 575:flex-col justify-between px-3 992:px-1 text-white">
     <div class="hero__content">
       <h2 class="text-[2.5rem] font-bold leading-[55px] text-[#fff]">
-        Discover a new era of cool <br />
-        <span> {{ PokeContent }} </span>
+        Discover a new era of cool <br>
+        <span class='block'> {{ PokeContent }} </span>
       </h2>
-      <p>
+      <p class='992:text-[11px] 992:w-full text-[0.8rem] leading-[25px] w-[75%] '>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis sunt
-        quidem, explicabo <br />
+        quidem, explicabo 
         optio culpa vitae quo natus minima voluptatibus commodi.
       </p>
 
@@ -16,7 +16,7 @@
           class="flex items-center gap-1 rounded-[50px] border border-[#5142fc] bg-transparent px-[25px] py-[7px] text-[0.9rem] outline-none"
         >
           <RocketOutlined />
-          
+
           <RouterLink to="/Market">
             <a class="text-[#fff] hover:text-white">Explore</a>
           </RouterLink>
@@ -29,7 +29,7 @@
         </button>
       </div>
     </div>
-    <div class="w-[500px] overflow-hidden">
+    <div class="w-[500px] 575:w-[100%] 992:px-1 575:mt-[50px] overflow-hidden 992:mt-[70px]">
       <video
         :src="video"
         class="video h-auto w-full rounded-[7px]"
@@ -46,7 +46,7 @@
 import { defineComponent } from "vue";
 import { RocketOutlined } from "@ant-design/icons-vue";
 import { EditOutlined } from "@ant-design/icons-vue";
-import video from "../video/Home Video.mp4"
+import video from "../video/Home Video.mp4";
 </script>
 <script lang="ts">
 export default defineComponent({
@@ -114,4 +114,13 @@ h2 span {
   margin-right: 7px;
   display: inline-block;
 }
+
+@media only screen and (max-width: 992px) {
+  h2 {
+    font-size: 1.5rem;
+    line-height: 45px;
+  }
+}
+
+
 </style>

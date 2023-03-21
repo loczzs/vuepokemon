@@ -3,31 +3,30 @@
     <header
       v-show="showHeader"
       ref="header"
-      class="fixed top-0 left-0 z-20 h-20 w-full"
+      class="fixed top-0 left-0 z-50 h-20 w-full"
     >
-      <div class="m-auto h-full h-full w-[90%] px-3">
+      <div class="m-auto h-full h-full w-[90%] px-3 992:px-1">
         <div className="h-full flex flex-auto items-center justify-between  ">
-          <div class="">
+          <div>
             <h2 class="h2">NTFs</h2>
           </div>
 
-          <div className="nav__menu flex">
+          <div className="nav__menu flex  748:hidden ">
             <ul className="flex items-center gap-[2.7rem] mb-0">
-              <RouterLink
-                :to="item.url"
-                class="nav__item cursor-pointer text-[15px] text-[#FFF] no-underline hover:text-white"
-                v-for="item in NAV__LINKS"
-                :key="item.id"
-                active-class="active"
-              >
-                {{ item.display }}
-              </RouterLink>
+              <Nav />
             </ul>
           </div>
 
-          <div class="flex">
+          <div class="flex 748:hidden">
             <div
-              @click="visible = !visible"
+              @click="
+                () => {
+                  title ='cart'
+                  navbar = true;
+                  withz = '500';
+                  setDrawer(true, true);
+                }
+              "
               class="mr-5 flex cursor-pointer items-center text-white"
             >
               <div class="relative">
@@ -43,82 +42,83 @@
             <button
               className="text-[0.8rem] flex px-[25px] py-[7px] gap-2 text-[#fff] rounded-[50px] items-center border border-[#5242fc]"
             >
-              <DollarCircleOutlined style="font-size: 17px ;color: #f7b54a;" />
+              <DollarCircleOutlined style="font-size: 17px; color: #f7b54a" />
               <span class="text-[#f7b54a]">{{ userCoin }}</span>
             </button>
+            <div
+              @click="
+                () => {
+                  title ='Profile'
+                  navbar = true;
+                  withz = '500';
+                  setDrawer(true, false);
+                }
+              "
+              class="ml-5 flex cursor-pointer items-center"
+            >
+              <UserOutlined style="font-size: 30px; color: #fff" />
+            </div>
             <span className="mobile__menu">
               <i className="ri-menu-line"></i>
             </span>
           </div>
 
-          <a-drawer
-            :width="500"
-            :visible="visible"
-            class="custom-class"
-            title="Cart"
-            placement="right"
-            @close="visible = !visible"
-          >
-            <div class="h-full">
-              <div class="scrollbar h-[85%] overflow-y-scroll">
-                <table style="width: 100%">
-                  <tr class="border-b border-gray-500 py-1 text-left">
-                    <th class="mb-0 py-[10px] text-xl text-[#fff]">Pokemon</th>
+          <!-- --------------------------------------------- -->
 
-                    <th class="mb-0 py-[10px] text-xl text-[#fff]">Price</th>
-                    <th class="mb-0 py-[10px] text-xl text-[#fff]">Action</th>
-                  </tr>
-                  <tr
-                    class="highlight border-b border-gray-500"
-                    v-for="item in cart"
-                    :key="item.id"
-                  >
-                    <td class="flex items-center">
-                      <img
-                        style="height: 70px; width: 70px"
-                        :src="item.img"
-                        alt=""
-                        class="mr-1"
-                      />
-                      <h1 class="mb-0 text-sm text-[#fff]">{{ item.name }}</h1>
-                    </td>
-
-                    <td>
-                      <h1 class="mb-0 text-sm text-[#fff]">{{ item.price }}</h1>
-                    </td>
-                    <td class="text-left">
-                      <button
-                        @click="deLetecart(item)"
-                        class="rounded-sm p-1 text-sm text-red-600 hover:bg-red-600 hover:text-white"
-                      >
-                        Remove
-                      </button>
-                    </td>
-                    <td></td>
-                  </tr>
-                </table>
-              </div>
-              <div class="z-50 mt-5 h-auto bg-[#14141f]">
-                <h1 class="mb-2 text-right text-xl text-[#fff]">
-                  Total: {{ total }}
-                </h1>
-                <div class="flex w-full justify-end">
-                  <button
-                    @click="clearCart()"
-                    class="mr-3 rounded-[10px] border border-[#fff] px-[1rem] py-[0.5rem] text-[1rem] text-[#fff] hover:bg-[#5bc0be]"
-                  >
-                    Clear Cart
-                  </button>
-                  <button
-                    @click="checkPurchase()"
-                    class="rounded-[10px] border border-[#fff] px-[1rem] py-[0.5rem] text-[1rem] text-[#fff] hover:bg-[#5bc0be]"
-                  >
-                    Purchase
-                  </button>
+          <div class="hidden gap-5 748:flex 748:items-center ">
+            <div
+              className="text-[0.8rem] flex px-[25px] py-[7px] gap-2 text-[#fff] rounded-[50px] items-center border border-[#5242fc]"
+            >
+              <DollarCircleOutlined style="font-size: 17px; color: #f7b54a" />
+              <span class="text-[#f7b54a]">{{ userCoin }}</span>
+            </div>
+            <div
+              @click="
+                () => {
+                  title='cart'
+                  withz = '90%';
+                  navbar = true;
+                  setDrawer(true, true);
+                }
+              "
+              class="flex cursor-pointer items-center text-white"
+            >
+              <div class="relative">
+                <ShoppingOutlined style="font-size: 30px; color: #fff" />
+                <div
+                  v-show="cart.length > 0"
+                  class="first-letter: absolute top-[0] right-0 z-50 h-[20px] w-[20px] translate-x-[50%] -translate-y-[35%] rounded-[50%] bg-red-500 px-[1px] text-center leading-[20px]"
+                >
+                  <h1 class="mb-0 text-[11px] text-white">{{ cart.length }}</h1>
                 </div>
               </div>
             </div>
-          </a-drawer>
+            
+            <div
+              class="cursor-pointer"
+              @click="
+                () => {
+                  withz = '300';
+                  navbar = false;
+                  setDrawer(true, true);
+                }
+              "
+            >
+              <MenuFoldOutlined style="font-size: 30px; color: #483ec3" />
+            </div>
+          </div>
+
+          <!-- drawer -->
+          <div class="hidden">
+            <Drawer
+              :visible="visible"
+              :title="title"
+              :cartorinfo="cartorinfo"
+              @closeDrawer="visible = !visible"
+              :withz="withz"
+              :navbar="navbar"
+            />
+          </div>
         </div>
       </div>
     </header>
@@ -136,27 +136,32 @@
 <script setup lang="ts">
 import Home from "./@Pages/Home.vue";
 import Market from "./@Pages/Market.vue";
-
+import Drawer from "./components/Drawer.vue";
 import { defineComponent, ref } from "vue";
-import { DollarCircleOutlined } from "@ant-design/icons-vue";
-import { ShoppingCartOutlined } from "@ant-design/icons-vue";
+import {
+  DollarCircleOutlined,
+  ShoppingCartOutlined,
+  UserOutlined,
+  MenuFoldOutlined,
+  ShoppingOutlined,
+} from "@ant-design/icons-vue";
+
 import { CBadge, CButton } from "@coreui/vue";
 import Game from "./@Pages/Game.vue";
-import Drawer from "./components/Drawer.vue";
 import { notification, Button } from "ant-design-vue";
 import { h } from "vue";
-interface Notification {
-  warning: string;
-  info: string;
-}
-
 </script>
 <script lang="ts">
 import { mapGetters, mapMutations, mapActions } from "vuex";
-import Footer from "./components/Footer.vue"
+import Footer from "./components/Footer.vue";
+import { Data, Pokemon } from "./interFace/interface";
+import Nav from "./components/Nav.vue";
 export default defineComponent({
   data() {
     return {
+      withz: "500",
+
+      navbar: true,
       visible: false,
       NAV__LINKS: [
         {
@@ -176,15 +181,16 @@ export default defineComponent({
         },
         {
           id: 4,
-          display: "Contact",
-          url: "/contact",
+          display: "Create",
+          url: "/Create",
         },
       ],
+      cartorinfo: true,
+      title: "Profile",
     };
   },
 
   mounted() {
-    this.setUsercoin();
     this.checkHeader(true);
     window.addEventListener("scroll", () => {
       if (
@@ -209,46 +215,12 @@ export default defineComponent({
       "addTocart",
       "deLetecart",
       "clearCart",
-      "setUsercoin",
     ]),
-    checkPurchase: function () {
-      if (this.cart.length === 0) return;
-      if (this.total > this.userCoin) {
-        this.showNotification(
-          "warning",
-          "you don't have enough money to pay let's play the game to get bonus"
-        );
-        return;
-      }
-      this.Purchase();
-      this.showNotification("info", "Let's play the game to get the money");
-      this.visible = true;
-    },
-    showNotification: function (type: keyof Notification, title: string) {
-      const key = `open${Date.now()}`;
-      notification[type]({
-        message: "Notification Title",
-        description: `${title}`,
-        btn: h(
-          Button,
-          {
-            type: "primary",
-            size: "small",
 
-            onClick: () => {
-              this.checkHeader(false);
-              this.visible = false;
-              notification.close(key);
-              setTimeout(() => {
-                this.$router.replace({ path: "/Game" });
-              }, 700);
-            },
-          },
-          "Go To Game"
-        ),
-        key,
-        onClose: close,
-      });
+    setDrawer: function (visible: boolean, cartorinfo: boolean) {
+      this.visible = visible;
+
+      this.cartorinfo = cartorinfo;
     },
   },
 
@@ -257,14 +229,18 @@ export default defineComponent({
     Footer,
     DollarCircleOutlined,
     ShoppingCartOutlined,
-    Drawer,
+    UserOutlined,
     Market,
     Game,
     CBadge,
     CButton,
+    Drawer,
+    MenuFoldOutlined,
+    ShoppingOutlined,
+    Nav,
   },
   computed: {
-    ...mapGetters(["showHeader", "userCoin", "cart", "total"]),
+    ...mapGetters(["showHeader", "userCoin", "cart", "total", "myPokemon"]),
   },
 });
 </script>
@@ -282,20 +258,6 @@ body {
 section,
 footer {
   padding: 60px 0px;
-}
-
-.animate {
-  animation: move 0.5s linear alternate;
-}
-
-@keyframes move {
-  from {
-    right: -200px;
-  }
-
-  to {
-    right: 0;
-  }
 }
 
 .header__shrink {

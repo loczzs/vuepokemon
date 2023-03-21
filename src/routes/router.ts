@@ -4,6 +4,7 @@ import Pnf from "@pages/NotFoundPage.vue";
 import Home from "@/@Pages/Home.vue";
 import Market from "@/@Pages/Market.vue"
 import Game from "@/@Pages/Game.vue"
+import Create from "@/@Pages/Create.vue";
 
 //Create a router and then export it
 
@@ -23,6 +24,11 @@ const _routes:Array<vR.RouteRecordRaw> = [
   path:"/Game",
   component:Game,
   name:"game"
+},
+{
+  path:"/Create",
+  component: Create,
+  name:"Create"
 },
 
 ];

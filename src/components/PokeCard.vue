@@ -1,10 +1,16 @@
 <script setup lang="ts"></script>
 
 <template lang="">
-  <div class="mt-2 rounded-[10px] bg-[#343444] hover:mt-1">
+  <div  class="cardcontain relative mt-2 ">
     <div
-      :style="{ backgroundImage: createBackgroundString }"
-      class="mb-[5px] rounded-t-[10px] px-[20px]"
+      @click="
+        checkMyPokemon
+          ? alertowded()
+          : checkCart
+          ? deLetecart(PokeinFo)
+          : addTocart(PokeinFo)
+      "
+      class="img absolute top-[-50px] left-0 right-0 bottom-0 cursor-pointer"
     >
       <img
         :src="PokeinFo.img"
@@ -12,55 +18,73 @@
         class="w-full rounded-[10px] rounded-[10px]"
       />
     </div>
-    <div class="nft__content p-[20px]">
-      <h5 class="mb-[15px] flex items-center justify-between">
-        <a class="text-[1.5rem] text-[#fff] no-underline">{{
-          PokeinFo.name
-        }}</a>
-        <div class="flex items-center text-[#fff]">
-          <a
-            class="flex items-center text-[19px] text-[#fff] no-underline hover:text-white"
-            >{{ PokeinFo.price }}
-          </a>
-          <DollarCircleOutlined style="padding: 0px 4px; font-size: 17px" />
-        </div>
-      </h5>
-      <div class="flex gap-3">
-        <div class="creator__info flex w-full items-center justify-between">
-          <div>
-            <h6>HP</h6>
-            <p>{{ PokeinFo.hp }}</p>
-          </div>
-
-          <div>
-            <h6>DAMAGE</h6>
-            <p>{{ PokeinFo.damge }}</p>
-          </div>
-        </div>
+    <div class="card rounded-[10px] bg-[#343444]">
+      <div
+        :style="{ backgroundImage: createBackgroundString }"
+        class="card1 mb-[5px] overflow-hidden rounded-t-[10px] px-[20px]"
+      >
+        <img
+          :src="PokeinFo.img"
+          alt=""
+          class="w-full rounded-[10px] rounded-[10px]"
+        />
       </div>
+      <div class="card2 p-[20px]">
+        <h5 class="mb-[15px] flex  items-center justify-between">
+          <a class="text-[1.5rem] break text-[#fff] no-underline">{{
+            PokeinFo.name
+          }}</a>
+          <div class="flex items-center text-[#fff]">
+            <a
+              class="flex items-center text-[19px] text-[#fff] no-underline hover:text-white"
+              >{{ PokeinFo.price }}
+            </a>
+            <DollarCircleOutlined style="padding: 0px 4px; font-size: 17px" />
+          </div>
+        </h5>
+        <div class="flex gap-3">
+          <div class="creator__info flex w-full items-center justify-between">
+            <div>
+              <h6>HP</h6>
+              <p>{{ PokeinFo.hp }}</p>
+            </div>
 
-      <div class="mt-3 flex items-center justify-between">
-        <button
-          @click="
-            checkMyPokemon
-              ? alertowded()
-              : checkCart
-              ? deLetecart(PokeinFo)
-              : addTocart(PokeinFo)
-          "
-          class="flex items-center gap-1 rounded-[50px] border border-[#5142fc] px-[20px] py-[5px] text-[0.9rem] text-[#fff] transition duration-300 ease-out hover:bg-[#5142fc] hover:ease-in"
-        >
-          <i class="ri-shopping-bag-line"></i>
-          <span>{{
-            checkMyPokemon ? "Have owned" : checkCart ? "Added" : "Add To Cart"
-          }}</span>
-        </button>
+            <div>
+              <h6>DAMAGE</h6>
+              <p>{{ PokeinFo.damge }}</p>
+            </div>
+          </div>
+        </div>
 
-        <span class="history__link">
-          <a class="text-[0.9rem] text-[#fff] no-underline opacity-[85%]"
-            >View History</a
+        <div class="mt-3 flex items-center justify-between">
+          <button
+            :disabled="checkMyPokemon"
+            @click="
+              checkMyPokemon
+                ? alertowded()
+                : checkCart
+                ? deLetecart(PokeinFo)
+                : addTocart(PokeinFo)
+            "
+            :class="{ ' bg-[#5142fc]': checkMyPokemon }"
+            class="flex items-center gap-1 rounded-[50px] border border-[#5142fc] px-[20px] py-[5px] text-[0.9rem] text-[#fff] transition duration-300 ease-out hover:bg-[#5142fc] hover:ease-in"
           >
-        </span>
+            <i class="ri-shopping-bag-line"></i>
+            <span>{{
+              checkMyPokemon
+                ? "Have owned"
+                : checkCart
+                ? "Added"
+                : "Add To Cart"
+            }}</span>
+          </button>
+
+          <span class="history__link">
+            <a class="text-[0.9rem] text-[#fff] no-underline opacity-[85%]"
+              >View History</a
+            >
+          </span>
+        </div>
       </div>
     </div>
   </div>
@@ -153,4 +177,32 @@ export default   {
   margin-bottom: 0;
   font-weight: 500;
 }
+.cardcontain {
+  transition: all 0.7s;
+}
+.card {
+  transition: all 0.5s;
+  z-index: 1000 !important;
+  cursor: pointer !important;
+}
+.cardcontain:hover .card {
+  cursor: pointer;
+  z-index: 1000;
+  transform: rotateX(40deg);
+  box-shadow: 1px 17px 18px 5px #6d2e75;
+}
+.cardcontain:hover .card div img {
+  transition: 0.5s all;
+  opacity: 0;
+}
+
+.cardcontain:hover .img {
+  opacity: 1;
+  z-index: 10;
+}
+.img {
+  z-index: 1;
+  opacity: 0;
+}
+
 </style>

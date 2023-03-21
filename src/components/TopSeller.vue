@@ -1,31 +1,33 @@
 <template>
-  <section>
-    <div class="seller__section-title  mb-[3rem]">
+  <section >
+    <div class="seller__section-title mb-[3rem] px-3">
       <h3 class="text-3xl font-semibold text-[#fff] text-[white]">
         Top Seller
       </h3>
     </div>
 
-   <div class="flex flex-wrap justify-between ">
-    <div
-      v-for="seller in listSeller"
-      :key="seller.id"
-      class="single__seller-card flex items-center gap-3 mb-[1.5rem]"
-    >
-      <div class="h-[80px] w-[80px]">
-        <img :src="seller. sellerImg" alt="" class="w-full" />
-      </div>
+    <div class="flex flex-wrap ">
+      <div
+        v-for="seller in listSeller"
+        :key="seller.id"
+        class="single__seller-card mb-[1.5rem] flex w-1/6 respon items-center gap-3 px-3"
+      >
+        <div class="h-[80px] w-[80px]">
+          <img :src="seller.sellerImg" alt="" class="w-full" />
+        </div>
 
-      <div className="seller__content">
-        <h6>{{seller.sellerName}}</h6>
-        <h6>{{seller.currentBid}}</h6>
+        <div className="seller__content">
+          <h6>{{ seller.sellerName }}</h6>
+          <h6>{{ seller.currentBid }}</h6>
+        </div>
       </div>
     </div>
-   </div>
   </section>
 </template>
-<script lang="ts
-">
+<script
+  lang="ts
+"
+>
 import ava1 from "../images/ava-01.png"
 import ava2 from "../images/ava-02.png"
 import ava3 from "../images/ava-03.png"
@@ -35,7 +37,7 @@ import ava6 from "../images/ava-06.png"
 export default {
   data() {
     return {
-       
+
       listSeller: [
         {
           id: 1,
@@ -183,7 +185,9 @@ export default {
       ],
     };
   },
-  mounted() {},
+  mounted() {
+   
+  },
 };
 </script>
 <style scoped>
@@ -202,5 +206,29 @@ export default {
 }
 .link__seller {
   text-decoration: none;
+}
+
+.enter {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  
+
+
+  @media only screen and (max-width: 991px) {
+    .respon{
+      width: 25%;
+  }
+ }
+
+  @media only screen and (max-width: 767px) {
+    .respon{
+      width: 33.33%;
+  }
+ }
+  @media only screen and (max-width: 575px) {
+  .respon{
+    width: 50%;;
+  }
 }
 </style>

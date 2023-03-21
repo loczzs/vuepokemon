@@ -11,6 +11,18 @@ module.exports = {
         cyan: colors.cyan,
       },
     },
+    screens: {
+      'mobi': '345px',
+      
+
+      '748':{'max': '748px'} ,
+      '768':{'max': '768px'} ,
+    
+      '575':{'max':'575px'},
+      
+     '992':{'max': '992px'}
+     
+    },
   },
   plugins: [],
 }

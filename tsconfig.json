@@ -15,7 +15,9 @@
     "noEmit": true,
     "paths": {
       //Direct
-
+      "vue/*": [
+        "node_modules/@vue/compat/*"
+     ],
       //Sub Locations
       "@/*": ["*"],
       "@components/*": ["components/*"],
